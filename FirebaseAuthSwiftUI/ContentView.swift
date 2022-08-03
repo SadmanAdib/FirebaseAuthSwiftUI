@@ -8,16 +8,26 @@
 import SwiftUI
 import Firebase
 
+class FirebaseManager: NSObject {
+    
+    let auth: Auth
+    
+    static let shared = FirebaseManager()
+    
+    override init () {
+        FirebaseApp.configure()
+        auth = Auth.auth()
+        super.init()
+    }
+    
+}
+
 struct ContentView: View {
     
     @State private var isLoginMode = false
     @State private var email = ""
     @State private var password = ""
     @State private var statusMessage = ""
-    
-    init(){
-        FirebaseApp.configure()
-    }
     
     var body: some View {
         NavigationView{
@@ -98,7 +108,7 @@ struct ContentView: View {
     }
     
     func createAccount(){
-        Auth.auth().createUser(withEmail: email, password: password) { result, err in
+        FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to create user: \(err.localizedDescription)"
                 return
@@ -109,7 +119,7 @@ struct ContentView: View {
     }
     
     func loginUser(){
-        Auth.auth().signIn(withEmail: email, password: password) { result, err in
+        FirebaseManager.shared.auth.signIn(withEmail: email, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to sign in: \(err.localizedDescription)"
                 return
