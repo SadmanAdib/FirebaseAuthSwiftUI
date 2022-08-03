@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		321A9AB3289A813A002F966C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A9AB2289A813A002F966C /* AuthViewModel.swift */; };
+		321A9AB5289A8364002F966C /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A9AB4289A8364002F966C /* FirebaseManager.swift */; };
+		321A9AB9289A863C002F966C /* ImageSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A9AB8289A863C002F966C /* ImageSelectorView.swift */; };
 		32778752289A3BD200068EBF /* FirebaseAuthSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32778751289A3BD200068EBF /* FirebaseAuthSwiftUIApp.swift */; };
 		32778754289A3BD200068EBF /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32778753289A3BD200068EBF /* AuthView.swift */; };
 		32778756289A3BD500068EBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32778755289A3BD500068EBF /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		321A9AB2289A813A002F966C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		321A9AB4289A8364002F966C /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		321A9AB8289A863C002F966C /* ImageSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectorView.swift; sourceTree = "<group>"; };
 		3277874E289A3BD200068EBF /* FirebaseAuthSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseAuthSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32778751289A3BD200068EBF /* FirebaseAuthSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthSwiftUIApp.swift; sourceTree = "<group>"; };
 		32778753289A3BD200068EBF /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
@@ -40,6 +46,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		321A9AB6289A85A0002F966C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32778753289A3BD200068EBF /* AuthView.swift */,
+				32778766289A701300068EBF /* DashboardView.swift */,
+				321A9AB8289A863C002F966C /* ImageSelectorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		321A9AB7289A85C8002F966C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				321A9AB2289A813A002F966C /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		32778745289A3BD200068EBF = {
 			isa = PBXGroup;
 			children = (
@@ -59,12 +83,13 @@
 		32778750289A3BD200068EBF /* FirebaseAuthSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				321A9AB7289A85C8002F966C /* ViewModel */,
+				321A9AB6289A85A0002F966C /* Views */,
 				32778751289A3BD200068EBF /* FirebaseAuthSwiftUIApp.swift */,
-				32778753289A3BD200068EBF /* AuthView.swift */,
 				32778755289A3BD500068EBF /* Assets.xcassets */,
 				32778764289A52C900068EBF /* GoogleService-Info.plist */,
 				32778757289A3BD500068EBF /* Preview Content */,
-				32778766289A701300068EBF /* DashboardView.swift */,
+				321A9AB4289A8364002F966C /* FirebaseManager.swift */,
 			);
 			path = FirebaseAuthSwiftUI;
 			sourceTree = "<group>";
@@ -155,9 +180,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321A9AB3289A813A002F966C /* AuthViewModel.swift in Sources */,
 				32778754289A3BD200068EBF /* AuthView.swift in Sources */,
+				321A9AB5289A8364002F966C /* FirebaseManager.swift in Sources */,
 				32778767289A701300068EBF /* DashboardView.swift in Sources */,
 				32778752289A3BD200068EBF /* FirebaseAuthSwiftUIApp.swift in Sources */,
+				321A9AB9289A863C002F966C /* ImageSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
