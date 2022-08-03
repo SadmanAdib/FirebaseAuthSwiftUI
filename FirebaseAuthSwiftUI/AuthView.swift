@@ -19,15 +19,16 @@ class FirebaseManager: NSObject {
         auth = Auth.auth()
         super.init()
     }
-    
 }
 
-struct ContentView: View {
+struct AuthView: View {
     
     @State private var isLoginMode = false
     @State private var email = ""
     @State private var password = ""
     @State private var statusMessage = ""
+    @State private var showingDashboard = false
+    @State private var showingAlert = false
     
     var body: some View {
         NavigationView{
@@ -89,11 +90,16 @@ struct ContentView: View {
                     .tint(.blue)
                     .controlSize(.large)
                     .padding(.bottom, 50)
-                    
-                    Text(statusMessage)
+                    .disabled(email.isEmpty || password.count<6)
                 }
                 .navigationTitle(isLoginMode ? "Log In" : "Create Account")
             }
+        }
+        .sheet(isPresented: $showingDashboard){
+            DashboardView()
+        }
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text(statusMessage), dismissButton: .default(Text("Ok")))
         }
         .navigationViewStyle(StackNavigationViewStyle()) // gets rid of log errors.
     }
@@ -111,10 +117,12 @@ struct ContentView: View {
         FirebaseManager.shared.auth.createUser(withEmail: email, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to create user: \(err.localizedDescription)"
+                showingAlert = true
                 return
             }
             
             statusMessage = "Successfully created user: \(result?.user.uid ?? "")"
+            showingAlert = true
         }
     }
     
@@ -122,16 +130,17 @@ struct ContentView: View {
         FirebaseManager.shared.auth.signIn(withEmail: email, password: password) { result, err in
             if let err = err {
                 statusMessage = "Failed to sign in: \(err.localizedDescription)"
+                showingAlert = true
                 return
             }
-            
-            statusMessage = "Successfully logged in: \(result?.user.uid ?? "")"
+            showingDashboard = true
+           // statusMessage = "Successfully logged in: \(result?.user.uid ?? "")"
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AuthView()
     }
 }
