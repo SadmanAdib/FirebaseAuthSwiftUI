@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
     @State private var isLoginMode = false
     @State private var email = ""
     @State private var password = ""
+    @State private var statusMessage = ""
+    
+    init(){
+        FirebaseApp.configure()
+    }
     
     var body: some View {
         NavigationView{
@@ -65,7 +71,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button{
-                        
+                        handleAction()
                     } label: {
                         Text(isLoginMode ? "Log In" : "Create Account")
                     }
@@ -73,9 +79,43 @@ struct ContentView: View {
                     .tint(.blue)
                     .controlSize(.large)
                     .padding(.bottom, 50)
+                    
+                    Text(statusMessage)
                 }
                 .navigationTitle(isLoginMode ? "Log In" : "Create Account")
             }
+        }
+        .navigationViewStyle(StackNavigationViewStyle()) // gets rid of log errors.
+    }
+    
+    func handleAction(){
+        if isLoginMode{
+            loginUser()
+        }
+        else{
+            createAccount()
+        }
+    }
+    
+    func createAccount(){
+        Auth.auth().createUser(withEmail: email, password: password) { result, err in
+            if let err = err {
+                statusMessage = "Failed to create user: \(err.localizedDescription)"
+                return
+            }
+            
+            statusMessage = "Successfully created user: \(result?.user.uid ?? "")"
+        }
+    }
+    
+    func loginUser(){
+        Auth.auth().signIn(withEmail: email, password: password) { result, err in
+            if let err = err {
+                statusMessage = "Failed to sign in: \(err.localizedDescription)"
+                return
+            }
+            
+            statusMessage = "Successfully logged in: \(result?.user.uid ?? "")"
         }
     }
 }
