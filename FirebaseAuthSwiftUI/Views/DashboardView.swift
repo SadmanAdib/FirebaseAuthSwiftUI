@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct DashboardView: View {
+    
+    @ObservedObject private var viewModel = AuthViewModel()
+    
+    init(){
+        viewModel.getData()
+    }
+    
     var body: some View {
-        Text("This is Dashboard")
-            .bold()
-            .font(.largeTitle)
-            .foregroundColor(.blue)
+        List(viewModel.items) { item in
+            Text(item.name)
+        }
+        .listStyle(.plain)
     }
 }
 
