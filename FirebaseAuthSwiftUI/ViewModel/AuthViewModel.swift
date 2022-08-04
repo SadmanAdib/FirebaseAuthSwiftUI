@@ -21,6 +21,22 @@ final class AuthViewModel: ObservableObject {
     @Published var name = ""
     @Published var notes = ""
     
+    func updateData(todoToUpdate: Todo) {
+        //get a reference to database
+        let db = FirebaseManager.shared.firestore
+        
+        //set the data to update
+        db.collection("todos").document(todoToUpdate.id).setData(["name" : "Updated: \(todoToUpdate.name)"], merge: true) { error in
+            //check for errors
+            if error == nil {
+                //no error
+                self.getData()
+            }
+            else{
+                //handle error
+            }
+        }
+    }
     
     func deleteData(todoToDelete: Todo) {
         //get a reference to database

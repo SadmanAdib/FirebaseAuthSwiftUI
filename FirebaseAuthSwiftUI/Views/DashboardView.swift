@@ -21,6 +21,15 @@ struct DashboardView: View {
                 HStack {
                     Text(todo.name)
                     Spacer()
+                    
+                    Button{
+                        //update todo
+                        viewModel.updateData(todoToUpdate: todo)
+                    }label: {
+                        Image(systemName: "pencil")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    
                     Button{
                         //delete todo
                         viewModel.deleteData(todoToDelete: todo)
