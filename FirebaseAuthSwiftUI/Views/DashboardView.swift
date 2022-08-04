@@ -17,8 +17,18 @@ struct DashboardView: View {
     
     var body: some View {
         VStack {
-            List(viewModel.items) { item in
-                Text(item.name)
+            List(viewModel.items) { todo in
+                HStack {
+                    Text(todo.name)
+                    Spacer()
+                    Button{
+                        //delete todo
+                        viewModel.deleteData(todoToDelete: todo)
+                    }label: {
+                        Image(systemName: "xmark.bin.fill")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                }
             }
             .listStyle(.plain)
             

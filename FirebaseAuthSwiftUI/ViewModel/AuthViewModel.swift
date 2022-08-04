@@ -21,6 +21,34 @@ final class AuthViewModel: ObservableObject {
     @Published var name = ""
     @Published var notes = ""
     
+    
+    func deleteData(todoToDelete: Todo) {
+        //get a reference to database
+        let db = FirebaseManager.shared.firestore
+        
+        //specify document to delete
+        db.collection("todos").document(todoToDelete.id).delete { error in
+            //check for errors
+            if error == nil {
+                //no error
+                
+                //update ui from main thread
+                DispatchQueue.main.async {
+                    self.items.removeAll { todo in
+                        
+                        //check for todo to remove
+                        return todo.id == todoToDelete.id
+                    }
+                }
+                
+                
+            }
+            else{
+                //handle error
+            }
+        }
+    }
+    
     func addData(name: String, notes: String){
         //get reference to the database
         let db = FirebaseManager.shared.firestore
