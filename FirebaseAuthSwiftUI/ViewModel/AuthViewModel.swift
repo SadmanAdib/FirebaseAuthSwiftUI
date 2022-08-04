@@ -60,8 +60,6 @@ final class AuthViewModel: ObservableObject {
                         return todo.id == todoToDelete.id
                     }
                 }
-                
-                
             }
             else{
                 //handle error
@@ -152,8 +150,5 @@ final class AuthViewModel: ObservableObject {
             showingDashboard = true
             // statusMessage = "Successfully logged in: \(result?.user.uid ?? "")"
         }
-    }
-    
-    
-    
+    }  
 }

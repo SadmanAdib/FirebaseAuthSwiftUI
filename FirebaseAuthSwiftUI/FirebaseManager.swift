@@ -13,7 +13,6 @@ class FirebaseManager: NSObject {
     let auth: Auth
     let firestore: Firestore
    
-    
     static let shared = FirebaseManager()
     
     override init () {
