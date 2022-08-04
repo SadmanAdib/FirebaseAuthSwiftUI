@@ -20,6 +20,7 @@
 		32778759289A3BD500068EBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32778758289A3BD500068EBF /* Preview Assets.xcassets */; };
 		32778765289A52C900068EBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32778764289A52C900068EBF /* GoogleService-Info.plist */; };
 		32778767289A701300068EBF /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32778766289A701300068EBF /* DashboardView.swift */; };
+		32A5898C289BBE56002D1579 /* UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A5898B289BBE56002D1579 /* UpdateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		32778758289A3BD500068EBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		32778764289A52C900068EBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		32778766289A701300068EBF /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		32A5898B289BBE56002D1579 /* UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				32778753289A3BD200068EBF /* AuthView.swift */,
 				32778766289A701300068EBF /* DashboardView.swift */,
 				321A9AB8289A863C002F966C /* ImageSelectorView.swift */,
+				32A5898B289BBE56002D1579 /* UpdateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				321A9AC2289B9AC3002F966C /* Model.swift in Sources */,
+				32A5898C289BBE56002D1579 /* UpdateView.swift in Sources */,
 				321A9AB3289A813A002F966C /* AuthViewModel.swift in Sources */,
 				32778754289A3BD200068EBF /* AuthView.swift in Sources */,
 				321A9AB5289A8364002F966C /* FirebaseManager.swift in Sources */,

@@ -24,7 +24,7 @@ struct DashboardView: View {
                     
                     Button{
                         //update todo
-                        viewModel.updateData(todoToUpdate: todo)
+                        viewModel.showingUpdateView = true
                     }label: {
                         Image(systemName: "pencil")
                     }
@@ -37,6 +37,11 @@ struct DashboardView: View {
                         Image(systemName: "xmark.bin.fill")
                     }
                     .buttonStyle(BorderlessButtonStyle())
+                }
+                .sheet(isPresented: $viewModel.showingUpdateView, onDismiss: {
+                    viewModel.getData()
+                }) {
+                    UpdateView(todo: todo, showingUpdateView: $viewModel.showingUpdateView)
                 }
             }
             .listStyle(.plain)

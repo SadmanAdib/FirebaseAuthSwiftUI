@@ -20,13 +20,17 @@ final class AuthViewModel: ObservableObject {
     @Published var items: [Todo] = []
     @Published var name = ""
     @Published var notes = ""
+    @Published var updatedName = ""
+    @Published var updatedNotes = ""
+    
+    @Published var showingUpdateView = false
     
     func updateData(todoToUpdate: Todo) {
         //get a reference to database
         let db = FirebaseManager.shared.firestore
         
         //set the data to update
-        db.collection("todos").document(todoToUpdate.id).setData(["name" : "Updated: \(todoToUpdate.name)"], merge: true) { error in
+        db.collection("todos").document(todoToUpdate.id).setData(["name" : updatedName, "notes" : updatedNotes], merge: true) { error in
             //check for errors
             if error == nil {
                 //no error
