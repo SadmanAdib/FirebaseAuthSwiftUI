@@ -18,7 +18,27 @@ final class AuthViewModel: ObservableObject {
     @Published var showingAlert = false
     
     @Published var items: [Todo] = []
+    @Published var name = ""
+    @Published var notes = ""
     
+    func addData(name: String, notes: String){
+        //get reference to the database
+        let db = FirebaseManager.shared.firestore
+        
+        //Add a document to collection
+        db.collection("todos").addDocument(data: ["name": name, "notes": notes]) { error in
+            //check for errors
+            if error == nil {
+                //no error
+                
+                //call get data to retrieve the latest data
+                self.getData()
+            }
+            else{
+                //handle error
+            }
+        }
+    }
     
     func getData(){
         //get reference to the database

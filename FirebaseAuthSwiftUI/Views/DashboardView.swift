@@ -16,10 +16,36 @@ struct DashboardView: View {
     }
     
     var body: some View {
-        List(viewModel.items) { item in
-            Text(item.name)
+        VStack {
+            List(viewModel.items) { item in
+                Text(item.name)
+            }
+            .listStyle(.plain)
+            
+            VStack{
+                Group{
+                    TextField("name", text: $viewModel.name)
+                    TextField("notes", text: $viewModel.notes)
+                }
+                .textFieldStyle(.roundedBorder)
+                .cornerRadius(15)
+                
+                Button {
+                    //call add data
+                    viewModel.addData(name: viewModel.name, notes: viewModel.notes)
+                    
+                    //clear text fields
+                    viewModel.name = ""
+                    viewModel.notes = ""
+                } label: {
+                    Text("Add Todo Item")
+                }
+                .buttonStyle(.bordered)
+                .tint(.blue)
+                .controlSize(.large)
+            }
+            .padding()
         }
-        .listStyle(.plain)
     }
 }
 
