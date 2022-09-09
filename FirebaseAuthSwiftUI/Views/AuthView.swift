@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthView: View {
     
-    @StateObject private var viewModel = AuthViewModel()
+    @StateObject var viewModel = AuthViewModel()
     
     var body: some View {
         NavigationView{

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DashboardView: View {
     
-    @ObservedObject private var viewModel = AuthViewModel()
+    @ObservedObject var viewModel = AuthViewModel()
     
     init(){
         viewModel.getData()
@@ -24,6 +24,7 @@ struct DashboardView: View {
                     
                     Button{
                         //update todo
+                        viewModel.selectedTodo = todo
                         viewModel.showingUpdateView = true
                     }label: {
                         Image(systemName: "pencil")
@@ -41,7 +42,7 @@ struct DashboardView: View {
                 .sheet(isPresented: $viewModel.showingUpdateView, onDismiss: {
                     viewModel.getData()
                 }) {
-                    UpdateView(todo: todo, showingUpdateView: $viewModel.showingUpdateView)
+                    UpdateView(todo: viewModel.selectedTodo, showingUpdateView: $viewModel.showingUpdateView)
                 }
             }
             .listStyle(.plain)

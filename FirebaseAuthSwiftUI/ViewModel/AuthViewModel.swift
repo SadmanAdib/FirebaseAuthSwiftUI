@@ -25,6 +25,8 @@ final class AuthViewModel: ObservableObject {
     
     @Published var showingUpdateView = false
     
+    var selectedTodo: Todo = Todo(id: "", name: "", notes: "")
+    
     func updateData(todoToUpdate: Todo) {
         //get a reference to database
         let db = FirebaseManager.shared.firestore

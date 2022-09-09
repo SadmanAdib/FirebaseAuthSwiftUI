@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdateView: View {
     
-    @ObservedObject private var viewModel = AuthViewModel()
+    @ObservedObject var viewModel = AuthViewModel()
     var todo: Todo
     @Binding var showingUpdateView: Bool
     
